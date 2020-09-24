@@ -4,11 +4,11 @@
 
 Kubernetes主要由以下几个核心组件组成：
 
-![image-20200916152431197](/root/.config/Typora/typora-user-images/image-20200916152431197.png)
+![image-20200916152431197](k8s基础.assets/image-20200916152431197.png)
 
 核心组件结构图:
 
-![image-20200916153804043](/root/.config/Typora/typora-user-images/image-20200916153804043.png)
+![image-20200916153804043](k8s基础.assets/image-20200916153804043.png)
 
 
 
