@@ -1,6 +1,6 @@
-# Docker的常用命令
+Docker的常用命令
 
-![img](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599484546574&di=82945808c36a570988efd315a38abde9&imgtype=0&src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F737565%2F201810%2F737565-20181016222632248-308675921.png)
+![img](/root/gitproject/learn-note/docker/Docker笔记.assets/timg)
 
 ## 帮助命令
 
@@ -760,7 +760,7 @@ CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   
 
 作业：使用kibana连接es？思考网络如何连接过去
 
-![image-20200908183233581](/root/.config/Typora/typora-user-images/image-20200908183233581.png)
+![](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200908183233581.png)
 
 
 
@@ -787,15 +787,15 @@ docker run -d -p 9000:9000  \
 
 访问测试： http://localhost:9000
 
-![image-20200908184542068](/root/.config/Typora/typora-user-images/image-20200908184542068.png)
+![image-20200908184542068](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200908184542068.png)
 
 选择本地
 
-![image-20200908184709745](/root/.config/Typora/typora-user-images/image-20200908184709745.png)
+![image-20200908184709745](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200908184709745.png)
 
 进入之后的面板
 
-![image-20200908185039944](/root/.config/Typora/typora-user-images/image-20200908185039944.png)
+![image-20200908185039944](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200908185039944.png)
 
 
 
@@ -831,7 +831,7 @@ bootfs(boot file system) 主要包含bootloader和kernel，bootloader 主要是�
 
 roorfs （root file system），在bootfs之上。包含的就是典型Linux系统中的 /dev ，/proc，/bin ，/etx 等标准的目录和文件。rootfs就是各种不同的操作系统发行版。比如Ubuntu，Centos等等。
 
-![img](http://img.vnfan.com/pictures/blogs/2018_12/12180844322018196a29c55c8de4a2.png)
+![img](/root/gitproject/learn-note/docker/Docker笔记.assets/12180844322018196a29c55c8de4a2.png)
 
 平时安装的centos有几个G，而docker中只有几百兆
 
@@ -904,16 +904,16 @@ docker.io/library/redis:latest
 举一个简单的例子，假如基于 Ubuntu Linux16.04创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加 Python包，
 就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创健第三个镜像层该像当前已经包含3个镜像层，如下图所示（这只是一个用于演示的很简单的例子）。
 
-![image-20200909105754579](/root/.config/Typora/typora-user-images/image-20200909105754579.png)
+![image-20200909105754579](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909105754579.png)
 
 在添加额外的镜像层的同时，镜像始终保持是当前所有镜像的组合，理解这一点非常重要。下图中举了一个简单的例子，每个镜像层包含3个文件，而镜像包含了来自两个镜像层的6个文件。
 
-![image-20200909111548369](/root/.config/Typora/typora-user-images/image-20200909111548369.png)
+![image-20200909111548369](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909111548369.png)
 
  上图中的镜像层跟之前图中的略有区別，主要目的是便于展示文件
 下图中展示了一个稍微复杂的三层镜像，在外部看来整个镜像只有6个文件，这是因为最上层中的文件7是文件5的一个更新版
 
-![image-20200909110842291](/root/.config/Typora/typora-user-images/image-20200909110842291.png)
+![image-20200909110842291](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909110842291.png)
 
  这种情況下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中
 
@@ -925,7 +925,7 @@ Docker在 Windows上仅支持 windowsfilter 一种存储引擎，该引擎基于
 
 下图展示了与系统显示相同的三层镜像。所有镜像层堆并合井，对外提供统一的视图
 
-![image-20200909105849943](/root/.config/Typora/typora-user-images/image-20200909105849943.png)
+![image-20200909105849943](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909105849943.png)
 
 > 特点
 
@@ -933,11 +933,11 @@ Docker在 Windows上仅支持 windowsfilter 一种存储引擎，该引擎基于
 
 这一层就是我们通常说的容器层，容器之下的都叫镜像层！
 
-![img](https://img2020.cnblogs.com/blog/292888/202006/292888-20200628131301116-1158117121.png)
+![img](/root/gitproject/learn-note/docker/Docker笔记.assets/292888-20200628131301116-1158117121.png)
 
-![img](https://img2020.cnblogs.com/blog/292888/202006/292888-20200628131829534-730198032.png)
+![img](/root/gitproject/learn-note/docker/Docker笔记.assets/292888-20200628131829534-730198032.png)
 
-![image-20200909110249966](/root/.config/Typora/typora-user-images/image-20200909110249966.png)
+![image-20200909110249966](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909110249966.png)
 
 ## commit镜像
 
@@ -985,7 +985,7 @@ MySQL，容器删除了，删库跑路！需求：MySQL数据可以存储在本�
 
 这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！
 
-![image-20200909141032977](/root/.config/Typora/typora-user-images/image-20200909141032977.png)
+![image-20200909141032977](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909141032977.png)
 
 **总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！**
 
@@ -1268,7 +1268,7 @@ drwxr-xr-x   2 root root    6 Sep  9 07:36 volume02    的，就是数据卷目�
 
 多个mysql同步数据！通过 --volumes-from 即可实现
 
-![image-20200909160804618](/root/.config/Typora/typora-user-images/image-20200909160804618.png)
+![image-20200909160804618](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909160804618.png)
 
 ```shell
 #启动三个容器，通过我们刚才自己的写镜像启动
@@ -1346,7 +1346,7 @@ docker01
 # 测试依旧可以访问,并且docker01和docker02之间还可以同步
 ```
 
-![image-20200909180147137](/root/.config/Typora/typora-user-images/image-20200909180147137.png)
+![image-20200909180147137](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909180147137.png)
 
 多个mysql实现数据共享
 
@@ -1377,11 +1377,11 @@ dockerfile是用来构建docker镜像的文件！命令参数脚本！
 
 **查看一下官方是怎么做的？**
 
-![image-20200909180323932](/root/.config/Typora/typora-user-images/image-20200909180323932.png)
+![image-20200909180323932](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909180323932.png)
 
 
 
-![image-20200909180405460](/root/.config/Typora/typora-user-images/image-20200909180405460.png)
+![image-20200909180405460](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200909180405460.png)
 
 很多官方镜像都是基础包，很多功能没有，我们通常会自己搭建自己的镜像！
 
@@ -1398,7 +1398,7 @@ dockerfile是用来构建docker镜像的文件！命令参数脚本！
 3. /# 表示注释
 4. 每一个指令都会创建提交一个新的镜像层，并提交！
 
-![img](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599656277935&di=a3b8d8a77ffcaf787d9517730321544b&imgtype=0&src=http%3A%2F%2Fimg2020.cnblogs.com%2Fblog%2F1869289%2F202005%2F1869289-20200529090814461-1122968296.png)
+![img](file:///root/gitproject/learn-note/docker/Docker笔记.assets/292888-20200628131301116-1158117121.png?lastModify=1600935740)
 
 dockerfile是面向开发的，我们以后要发布项目，做镜像，就需要编写dockerfile文件，这个文件十分简单！
 
@@ -1435,13 +1435,13 @@ ENV          # 构建的时候设置环境变量
 
 
 
-![img](https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=268974649,2607019911&fm=26&gp=0.jpg)
+![img](/root/gitproject/learn-note/docker/Docker笔记.assets/u=268974649,2607019911&fm=26&gp=0.jpg)
 
 ## 实战测试
 
 Docker Hub中99%镜像都是从这个基础镜像过来的FROM scratch，然后配置需要的软件和配置来进行构建
 
-![image-20200910135448087](/root/.config/Typora/typora-user-images/image-20200910135448087.png)
+![image-20200910135448087](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200910135448087.png)
 
 > 创建一个自己的centos
 
@@ -1902,7 +1902,7 @@ $ docker tag 容器id chengcoder/mytomcat:1.0 #然后再次push
 
 
 
-![image-20200914182220037](/root/.config/Typora/typora-user-images/image-20200914182220037.png)
+![image-20200914182220037](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200914182220037.png)
 
 
 
@@ -1942,7 +1942,7 @@ $ docker tag 容器id chengcoder/mytomcat:1.0 #然后再次push
 # 问题，docker是如何处理容器网络访问的
 ```
 
-![image-20200914183511870](/root/.config/Typora/typora-user-images/image-20200914183511870.png)
+![image-20200914183511870](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200914183511870.png)
 
 ```shell
 [root@localhost tomcat]# docker run -d -P --name tomcat01 tomcat
@@ -2039,7 +2039,7 @@ PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
 # 结论：容器和容器之间是可以ping通的
 ```
 
-![image-20200915141641682](/root/.config/Typora/typora-user-images/image-20200915141641682.png)
+![image-20200915141641682](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200915141641682.png)
 
 **结论**:
 
@@ -2053,7 +2053,7 @@ PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
 
 Docker使用的是Linux的桥接，宿主机是一个Docker容器的网桥 docker0
 
-![image-20200915142234649](/root/.config/Typora/typora-user-images/image-20200915142234649.png)
+![image-20200915142234649](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200915142234649.png)
 
 Docker中所有网络接口都是虚拟的，虚拟的转发效率高（内网传递文件）。
 
@@ -2318,13 +2318,13 @@ redis - 不同的集群使用不同的网络，保证集群是健康和安全的
 
 mysql - 不同的集群使用不同的网络，保证集群是健康安全的
 
-![image-20200915150423515](/root/.config/Typora/typora-user-images/image-20200915150423515.png)
+![image-20200915150423515](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200915150423515.png)
 
 ## 网络连通
 
-![image-20200915151253622](/root/.config/Typora/typora-user-images/image-20200915151253622.png)
+![image-20200915151253622](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200915151253622.png)
 
-![image-20200915151515672](/root/.config/Typora/typora-user-images/image-20200915151515672.png)
+![image-20200915151515672](/root/gitproject/learn-note/docker/Docker笔记.assets/image-20200915151515672.png)
 
 ```shell
 # 测试打通 tomcat - mynet
