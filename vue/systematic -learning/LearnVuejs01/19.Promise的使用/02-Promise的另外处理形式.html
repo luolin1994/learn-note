@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //在then(函数1，函数2),其中函数1表示成功后调用的，函数2表示失败后调用的
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("hello vuejs")
+                reject("error message")
+
+            },1000)
+        }).then(data => {
+            console.log(data)
+        }, err => {
+            console.log(err)
+        })
+    </script>
+</body>
+</html>

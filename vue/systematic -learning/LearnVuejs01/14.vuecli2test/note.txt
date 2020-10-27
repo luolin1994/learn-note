@@ -1,0 +1,5 @@
+1. runtime-compile和runtime-only的区别
+runtime-compile:template->ast->render->virtual dom->UI
+runtime-only:render->virtual dom->UI
+2. .vue文件中的template是由谁编译的？
+     vue-template-compile

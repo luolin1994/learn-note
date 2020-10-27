@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基本框架</title>
+</head>
+<body>
+	<div id="app">
+        <!-- 指定替换哪个插槽 -->
+        <cpn><span slot="center">标题</span></cpn>
+        
+        <cpn><span slot="right">搜索</span></cpn>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <slot name="letf"><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot name="right"><span>右边</span></slot>
+        </div>
+    </template>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello'
+			},
+			methods:{
+
+			},
+            components:{
+                cpn:{
+                    template:'#cpn'
+                }
+            }
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h2>
+    hello
+</h2>
+
+<body>
+    <script>
+
+        //参数是一个函数(resolve, reject)
+        //resolve, reject本身又是函数
+        //链式编程
+        new Promise((resolve, reject) => {
+
+            //1.第一次网络请求代码
+            setTimeout( () => {
+                resolve()
+            } , 1000)
+            }).then(() => {
+            //第一次拿到结果的代码
+            console.log('hello,world')
+            console.log('hello,world')
+            console.log('hello,world')
+            console.log('hello,world')
+            console.log('hello,world')
+
+            return new Promise((resolve, reject) => {
+                //第二次网络请求
+                setTimeout(() => {
+                    resolve()
+                },1000)
+            })
+            }).then(() => {
+            //第二次结果处理
+            console.log('hello, vuejs');
+            console.log('hello, vuejs');
+            console.log('hello, vuejs');
+            console.log('hello, vuejs');
+            console.log('hello, vuejs');
+
+            return new Promise((resolve, reject) => {
+                //第三次网络请求
+                setTimeout(() => {
+                    resolve()
+            },1000)
+            })
+
+
+            }).then(() => {
+            //第三次结果处理
+            console.log('hello, python');
+            console.log('hello, python');
+            console.log('hello, python');
+            console.log('hello, python');
+            console.log('hello, python');
+            })
+
+
+    </script>
+
+
+</body>
+
+</html>

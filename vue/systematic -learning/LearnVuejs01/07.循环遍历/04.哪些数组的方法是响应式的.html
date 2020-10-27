@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基本框架</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<!--相当于将线性表转换为链表，提高操作的效率，为了更高效地更新虚拟DOM,diff算法；
+				注意：不要用index作为key-->
+			<li v-for="(item,index) in letters" >{{item}}</li>
+		</ul>
+		<button @click="btnClick">按钮</button>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello',
+				letters:['a','b','c','d','e']
+			},
+			methods:{
+				btnClick(){
+
+					//响应式：改变数组会在界面上显示出来
+
+					//1.push方法
+					//this.letters.push('aaa');
+					//this.letters.push('aaa','bbbb','cccc');
+
+					//2.pop()：删除数组中的最后一个元素
+					//this.letters.pop();
+
+					//3.shift()：删除数组中的第一个元素
+					//this.letters.shift();
+
+					//4.unshift():在数组最前面添加元素
+					//this.letters.unshift('aaaa');
+
+					//5.splice():删除元素、插入元素、替换元素
+					//  删除元素，第二个参数传入删除的个数(如果没有传，就是删除后面所有的元素)
+					//  替换元素，第二个参数表示替换的个数，后面为用于替换前面的内容
+					//  插入元素，第二个参数传入0，后面为插入的元素
+					//  splice(start)，第一个参数为起始位置
+					//this.letters.splice(2,0,'fff');
+
+					//6.sort():排序
+					//this.letters.sort();
+
+					//7.reverse():反转
+					//this.letters.reverse();
+
+					
+					//注意：通过索引值修改数组的元素为非响应式，Vue内部没有监听这种改变
+					//this.letters[0] = 'bbbb';
+					//方法1
+					//this.letters.splice(0,1,'bbbb');
+					//方法2
+					//set(要修改的对象，索引值，修改后的值)
+					Vue.set(this.letters,0,'bbbb');
+
+
+				}
+
+			}
+		})
+
+
+		 //可变参数
+		// function sum(...num){
+		// 	console.log(num);
+		// }
+
+		// sum(20,30,40,50,60,70,80);
+	</script>
+</body>
+</html>

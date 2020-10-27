@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue初体验</title>
+</head>
+<body>
+
+	<div id="app">
+		{{message}}
+	</div>
+
+
+	<script src="../js/vue.js"></script>
+	<script >
+		//em6中，let定义变量，const定义常量
+		//此为声明式编程范式，原生js为命令式编程范式
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:"hello,world"
+			}
+		})
+		
+	</script>
+</body>
+</html>

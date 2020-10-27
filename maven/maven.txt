@@ -1,0 +1,118 @@
+1. Maven POM(project object model, 项目对象模型)
+（1）作用： Maven 工程的基本工作单元，是一个XML文件，包含了项目的基本信息，用于描述项目如何构建，声明项目依赖，等等。执行任务或目标时，Maven 会在当前目录中查找 POM。它读取 POM，获取所需的配置信息，然后执行目标。
+（2）三个标准周期：clean(项目清理的处理)  default(build)(项目部署的处理)  site(项目站点文档创建的处理)
+       Maven 生命周期的每一个阶段的具体实现都是由 Maven 插件实现的
+
+2. Maven创建java项目
+命令格式：
+mvn archetype:generate -DgroupId=com.companyname.bank -DartifactId=consumerBanking -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false  (创建简单的java应用)
+
+mvn archetype:generate -DgroupId=com.companyname.automobile -DartifactId=trucks -DarchetypeArtifactId=maven-archetype-webapp  -DinteractiveMode=false (创建简单的java web应用)
+参数说明：
+ -DgourpId: 组织名，公司网址的反写 + 项目名称
+ -DartifactId: 项目名-模块名
+ -DarchetypeArtifactId: 指定 ArchetypeId，maven-archetype-quickstart，创建一个简单的 Java 应用
+ -DinteractiveMode: 是否使用交互模式
+
+3. Maven 构建&项目测试以及其他命令
+(1)mvn clean    清理目标目录
+(2)mvn compile  编译
+(3)mvn package  打包项目
+(4)mvn site     生成文档 
+若遇到问题: java.lang.NoClassDefFoundError: org/apache/maven/doxia/siterenderer/DocumentContent时，这是由于 maven-site-plugin 版本过低，升级到 3.3+ 即可，在pom.xml中添加以下配置：
+<project>
+  ...
+<build>
+<pluginManagement>
+    <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+    </plugins>
+    </pluginManagement>
+</build>
+ ...
+</project>
+
+
+
+4. Maven引入外部依赖
+在pom.xml文件中添加：
+<dependencies>
+    <!-- 在这里添加你的依赖 -->
+    <dependency>
+        <groupId>ldapjdk</groupId>  <!-- 库名称，也可以自定义 -->
+        <artifactId>ldapjdk</artifactId>    <!--库名称，也可以自定义-->
+        <version>1.0</version> <!--版本号-->
+        <scope>system</scope> <!--作用域-->
+        <systemPath>${basedir}\src\lib\ldapjdk.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+    </dependency> 
+</dependencies>
+
+5. Maven项目模板(archetype)
+(1) archetype 也就是原型，是一个 Maven 插件，准确说是一个项目模板，它的任务是根据模板创建一个项目结构。
+使用项目模板：
+ mvn archetype:generate 
+（创建时卡在 Generating project in Interactive mode， 解决办法：加一个参数-DarchetypeCatalog=internal，让它不要在远程服务器上取catalog）
+(2) DarchetypeCatalog
+当我们使用maven原型生成项目骨架时，经常会在[INFO] Generating project in Interactive mode这个地方特别慢，这里并不是什么出错卡住的原因，你打开mvn的debug模式就可看到下面的信息：[DEBUG] Searching for remote catalog: http://repo.maven.apache.org/maven2/archetype-catalog.xml
+他只是在寻找远程原型数据信息，而这个数据在外网并且还挺大，导致速度很慢，解决方式是我们手动下载这个archetype-catalog.xml文件到我们本地，把它放在.m2的目录下，.m2目录下也可以放置maven的配置文件，并且maven默认的本地仓库目录就在.m2的目录下面。.m2下面的maven配置文件比maven安装目录下的config目录下面的配置文件优先级高。因为.m2存在于当前用户的目录下，不同的用户有自己的maven配置习惯。
+
+把archetype-catalog.xml放在.m2目录下后我们在使用mvn archetype:generate时在后面添加-DarchetypeCatalog=local 这时mvn会使用本地的原型数据来供你选择生成骨架的原型。
+archetypeCatalog用来指定maven-archetype-plugin读取archetype-catalog.xml文件的位置：
+internal——maven-archetype-plugin内置的
+local——本地的，位置为~/.m2/archetype-catalog.xml
+remote——指向Maven中央仓库的Catalog
+file://
+http://
+
+
+6. Maven快照
+快照是一种特殊的版本，指定了某个当前的开发进度的副本。不同于常规的版本，Maven 每次构建都会在远程仓库中检查新的快照。 现在 data-service 团队会每次发布更新代码的快照到仓库中，比如说 data-service:1.0-SNAPSHOT 来替代旧的快照 jar 包。
+
+7. Maven自动化构建
+在一个项目成功构建完成后，其相关的依赖工程即开始构建，这样可以保证其依赖项目的稳定。
+方法：
+（1）在 bus-core-api 项目的 pom 文件中添加一个 post-build 目标操作来启动 app-web-ui 和 app-desktop-ui 项目的构建。
+（2）使用持续集成（CI） 服务器，比如 Hudson，来自行管理构建自动化。
+
+8. Maven依赖管理
+(1)一种相当常见的情况，比如说 A 依赖于其他库 B。如果，另外一个项目 C 想要使用 A ，那么 C 项目也需要使用库 B。Maven 可以避免去搜索所有所需库的需求。Maven 通过读取项目文件（pom.xml），找出它们项目之间的依赖关系。我们需要做的只是在每个项目的 pom 中定义好直接的依赖关系。其他的事情 Maven 会帮我们搞定。Maven 通过使用可传递的依赖机制
+(2)公共的依赖可以使用 pom 父的概念被统一放在一起
+
+9 Maven web应用
+(1) 创建web应用
+mvn archetype:generate -DgroupId=com.companyname.automobile -DartifactId=trucks -DarchetypeArtifactId=maven-archetype-webapp  -DinteractiveMode=false
+(2) 构建web应用
+mvn  clean package
+(3) 部署web应用
+将war包复制到web服务器的应用目录，重启web服务器
+例如tomcat： localhost:8080/name
+
+10. Maven之构件
+定义：在Maven中，任何依赖(jar包,tomcat等)，或项目(自己打包的jar,war等)输出都可成为构件。每个构件都有自己的唯一标识(唯一坐标)，由groupId，artifactId，和version等信息构成，由此，Maven就可以对构件进行版本控制，管理。
+groupId：当前Maven构件隶属的项目名。实际开发中，项目往往会模块化开发，如spring-core,spring-aop等，他们都是Spring项目下不同的模块。命名方式与Java包名类似，通常是域名的反向书写。如ch.qos.logback，事实上项目管理组织的网址是：http://logback.qos.ch/ 。(必须)
+artifactId：隶属项目中的模块名。(必须)
+version：当前版本。(必须)
+packaging：打包方式，如jar,war... (必须)
+classifier：帮助定义构建输出的一些附属构件。如spring-core.jar，还生成有文档javadoc.jar，源码sources.jar。
+
+11. Maven仓库的分类
+（1）本地仓库：
+Maven 在根据坐标查找依赖的构件时，先是在本地仓库中查找。默认情况下，每个用户在自己的用户目录下都有一个路径名为 .m2/repository/ 的目录，这个目录就是 Maven 的本地仓库目录每个用户在自己的用户目录下都有一个路径名为 .m2/repository/ 的目录，这个目录就是 Maven 的本地仓库目录。
+（2）远程仓库
+      
+（3）中央仓库
+是一个默认的远程仓库
+（4）私服
+私服是一个特殊的远程仓库，架设在局域网内。它是一个代理外网的远程仓库，供局域网内部的 Maven 用户使用。
+
+
+

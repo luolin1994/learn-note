@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		v-for与v-bind的结合
+	</title>
+
+	<style type="">
+		.active{
+			color: red
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<ul>
+			<li v-for="(item,index) in friut" @click="changeColor(index)" :class="liClass[index]">
+			       {{index}}-{{item}}
+		    </li>
+		</ul>
+		
+	</div>
+
+
+	<script src="../js/vue.js"></script>
+	<script >
+		const app = new Vue({
+			el:"#app",
+			data:{
+				friut:["苹果","芒果","香蕉","草莓","菠萝","西瓜"],
+				liClass:[{'active':true},{'active':false},{'active':false},{'active':false},{'active':false},{'active':false}],
+				index_now:0
+
+
+			},
+			methods:{
+				changeColor:function(index){
+					this.liClass[this.index_now].active = false;
+					this.liClass[index].active = true;
+					this.index_now = index;
+
+				}
+				// getClass:function(index){
+				// 	return this.liClass[index];
+
+				// }
+
+			}
+		})
+	</script>
+	
+</body>
+</html>

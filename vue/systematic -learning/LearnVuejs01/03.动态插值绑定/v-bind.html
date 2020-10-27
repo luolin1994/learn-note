@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind指令</title>
+
+	<style >
+		.active{
+			border: 5px solid red;
+		}
+
+
+		.line{
+			background: green;
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+
+	<div id="app">
+		<img v-bind:src="imgSrc">
+		<br>
+		<img :src="imgSrc" :title="imgTitle+'!!!'" :class="isActive?'active':''" @click="toggleActive">
+		<br>
+		<img :src="imgSrc" :title="imgTitle+'!!!'" :class="{active:isActive}" @click="toggleActive">
+		<!--通过methods获取 -->
+		<img :src="imgSrc" :title="imgTitle+'!!!'" :class="getClass()" @click="toggleActive">
+		<!-- 动态绑定class属性(有对象和数组两种方法)语法，同时可以定义普通的class，vue负责将两者结合-->
+		<!-- <img :src="imgSrc"  :class="{key1:value1, key2:value2}" @click="toggleActive"> -->
+		<!-- <img :src="imgSrc"  :class="{类名1:boolean, 类名2:boolean}"  class="类3" @click="toggleActive"> -->
+		
+
+		
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script >
+		var app = new Vue({
+			el:"#app",
+			data:{
+				imgSrc:"http://www.itheima.com/images/logo.png",
+				imgTitle:"黑马标志",
+				isActive:true,
+				isLine:true
+			},
+			methods:{
+				toggleActive:function(){
+					this.isActive = !this.isActive;
+					this.isLine = !this.isLine;
+				},
+				getClass:function(){
+					return {active:this.isActive, line:this.isLine};
+				}
+			}
+		})
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>hello</h2>
+
+    <script>
+        //当全部请求都成功时调用then
+        Promise.all([
+            // new Promise((resolve,reject) => {
+            //     $ajax({
+            //         url:'url1',
+            //         success: function (data) {
+            //             resolve(data)
+            //         }
+            //     })
+            // }),
+            // new Promise((resolve,reject) => {
+            //     $ajax({
+            //         url:'url2',
+            //         success: function(data) {
+            //             resolve(data)
+            //         }
+            //     })
+            // })
+
+
+            new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve('result1')
+                },1000)
+            }),
+            new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve('result2')
+                },1000)
+            })
+        ]).then(results => {
+            console.log(results)
+        })
+    </script>
+</body>
+</html>

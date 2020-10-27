@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户登录切换小问题</title>
+</head>
+<body>
+	<!--存在的小问题：
+	      在有输入内容的情况下，切换了类型，发现文字依然显示之前输入的内容。
+	    解答：
+	       因为Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用已经存在的元素，而不是重新创建心动鹅元素 (虚拟DOM)
+	       Vue发现原来的input元素不再使用，就直接拿到else中的input来使用
+	    解决方法：
+            给input加上key,且key值是唯一的，就不会产生复用的问题
+	       -->
+	<div id="app">
+		<span v-if="isUser">
+		    <label for="username">用户账号</label>
+		    <input type="text" id="username" placeholder="用户账号" key="username">
+		</span>
+		<span v-else>
+			<label for="email">用户邮箱</label>
+			<input type="text" id="email" placeholder="用户邮箱" key="email">
+		</span>
+		<button @click="isUser = ! isUser">切换类型</button>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello',
+				isUser: true
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>

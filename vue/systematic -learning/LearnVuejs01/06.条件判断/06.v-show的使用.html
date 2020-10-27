@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基本框架</title>
+</head>
+<body>
+	<div id="app">
+
+		<!--
+		  v-if：当条件为false时，包含v-if指令的元素，根本不存在于DOM中
+		  v-show: 当条件为false时，v-show只是给元素添加了一个行内样式：display:none
+		  如何选择：切换频率高时，用v-show;当只有一次切换时，一般使用v-if
+		-->
+
+		<h2 v-if="isShow" id="aaa">{{message}}</h2>
+
+		<h2 v-show="isShow" id="bbb">{{message}}</h2>
+		
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello',
+				isShow:true
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>

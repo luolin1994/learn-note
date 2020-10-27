@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基本框架</title>
+</head>
+<body>
+    <!--组件实例对象-->
+	<div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+    
+    <template id='cpn'>
+        <div>
+            <h2>当前计数: {{counter}}</h2>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
+    </template>
+
+	<script src="../js/vue.js"></script>
+	<script>
+        //1.注册全局组件
+        Vue.component('cpn', {
+            template:'#cpn',
+            data(){
+                return {
+                    counter:0
+                }
+            },
+            methods:{
+                increment(){
+                    this.counter++
+                },
+                decrement(){
+                    this.counter--
+                }
+            }
+        })
+
+
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello'
+			},
+			methods:{
+
+			}
+		})
+    </script>
+    
+    <script>
+        //以下原理可解释组件中的data为什么是函数，使组件在使用过程中指向的是不同data对象，拥有自己单独的data，数据互不干扰
+        //1.此时三个obj所指的是同一个对象
+        //obj中的值是{name:'why',age:18}对象的存储地址
+        const obj = {
+            name:'why',
+            age:18
+        }
+        function abc(){
+            return obj
+        }
+        let obj1 = abc();
+        let obj2 = abc();
+        let obj3 = abc();
+
+        //2.此时三个obj所指的是三个不同的对象
+        //该函数每次返回的是不同的对象
+        function df(){
+            return {
+                name:'why',
+                age:18
+            }
+        }
+        let obj4 = df();
+        let obj5 = df();
+        let obj6 = df();
+
+
+    </script>
+</body>
+</html>

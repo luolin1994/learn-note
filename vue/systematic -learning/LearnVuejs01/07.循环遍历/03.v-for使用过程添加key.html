@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue基本框架</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<!--相当于将线性表转换为链表，提高操作的效率，为了更高效地更新虚拟DOM,diff算法；
+				注意：不要用index作为key-->
+			<li v-for="(item,index) in letters" :key="item">{{item}}</li>
+		</ul>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el:"#app",
+			data:{
+				message:'hello',
+				letters:['a','b','c','d','e']
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
