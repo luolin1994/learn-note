@@ -88,3 +88,15 @@ AMQP协议的回顾
 </dependency>
 ```
 
+api查询：https://rabbitmq.github.io/rabbitmq-java-client/api/current/
+
+## 4.3 第一种模型（直连）
+
+![image-20201028093221596](blibliNote.assets/image-20201028093221596.png)
+
+在上图的模型中，有以下概念：
+
++ p: 生产者，也就是要发送消息的程序
++ c: 消费者，消息的接收者，会一直等待消息的到来。
++ queue: 消息队列，类似一个邮箱，可以缓存消息，生产者向其中投递消息，消费者从其中取出消息
+
