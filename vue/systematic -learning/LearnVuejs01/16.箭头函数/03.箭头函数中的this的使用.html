@@ -16,13 +16,14 @@
     //         console.log(this) //windows对象
     //     },100)
         
+        //箭头函数没有自己的this
         //结论：箭头函数中的this引用的是最近作用域中的this(上一层对象)
         //问题：箭头函数的this是如何查找到的
         //答案：向外层作用域中，一层层查找this，直到有this的定义
         const obj = {
             sss (){
                 setTimeout(function(){
-                    console.log(this) //windows对象
+                    console.log(this) //windows对象，因为该函数不是箭头函数，调用时依靠core函数
                 },1000)
 
                 console.log(this) //obj对象
@@ -32,6 +33,7 @@
                 })
             }
         }
+        obj.sss()
     </script>
 
 </body>
