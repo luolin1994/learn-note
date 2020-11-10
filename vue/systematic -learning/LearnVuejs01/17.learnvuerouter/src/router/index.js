@@ -82,6 +82,8 @@ const router =  new Router({
   linkActiveClass:'active'
 })
 
+
+//全局导航守卫
 //路由进行跳转之前会执行这个函数
 //前置守卫
 router.beforeEach((to, from, next) => {
