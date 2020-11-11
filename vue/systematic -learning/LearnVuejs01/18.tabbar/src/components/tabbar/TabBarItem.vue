@@ -37,7 +37,7 @@
         },
         methods: {
             itemClic(){
-                this.$router.replace(this.path).catch(err => {})
+                this.$router.replace(this.path).catch(err => {}) //this.$router.replace不可返回，this.$router.push可以返回
             },
         }
     }

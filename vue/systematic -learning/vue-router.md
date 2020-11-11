@@ -78,11 +78,15 @@ history.pushState({},'','me')
 
 history.back( )
 
+与this.$router.push相似
+
 ## 2.3 HTML5中的history模式：replaceState
 
 取代，不可返回
 
 history.replaceState({},'','home')
+
+与this.$router.replace相似
 
 ## 2.4 HTML5中的history模式：go
 
@@ -92,7 +96,7 @@ history.forward()等价于history.go(1)
 
 这几个接口等同于浏览器界面的前进后退
 
-
+与this.$router.go(n)相似
 
 # 3.传递参数的方式
 
