@@ -18,7 +18,22 @@
 
 # 3. css字体属性
 
+![image-20201112110128238](css-note.assets/image-20201112110128238.png)
+
+# 4. css文本属性
+
+> 行间距的表示
+
+![image-20201112112821548](css-note.assets/image-20201112112821548.png)
+
+![image-20201112113947101](css-note.assets/image-20201112113947101.png)
+
+# 5. css引入方式
+
+内部样式表  行内样式表 (内联样式表)    外部样式表
+
+![image-20201112134845044](css-note.assets/image-20201112134845044.png)
 
 
 
-
+# 6. Emmet语法
