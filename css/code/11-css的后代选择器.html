@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 后代选择器，改变的是ol中的li的样式，用空格隔开*/
+        ol li {
+            color: pink;
+        }
+
+        /* 只要元素2是元素1的后代就可以 */
+        ol a {
+            color: red;
+        }
+
+        /* 元素1和元素2可以是任意的基础选择器 */
+        .nav a {
+            color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <ol>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li><a href="#">孙子</a></li>
+    </ol>
+
+    <ul>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+    </ul>
+
+
+    <ol class="nav">
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li><a href="#">孙子</a></li>
+    </ol>
+
+</body>
+
+</html>

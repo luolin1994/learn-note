@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 链接伪类选择器，按照以下的顺序书写 */
+
+        /* 未访问过的链接 */
+        a:link {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* 已经访问过的链接 */
+        a:visited {
+            color: orange;
+        }
+
+        /* 鼠标停留的链接 */
+        a:hover {
+            color: skyblue;
+        }
+
+        /* 鼠标按下未弹起的时候 */
+        a:active {
+            color: green;
+        }
+
+
+        /* focue伪类选择器 */
+        input:focus {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#">小猪佩奇</a>
+    <a href="http://www.baidu.com">百度</a>
+
+    <input type="text" name="" id="">
+    <input type="text">
+
+</body>
+
+</html>

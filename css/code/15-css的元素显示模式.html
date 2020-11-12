@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        input {
+            width: 50px;
+            height: 20px;
+        }
+
+        a {
+            width: 150px;
+            height: 50px;
+            background-color: pink;
+            /* 把行内元素转换为块元素 block | inline | inline-block*/
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 元素一般分为块元素和行内元素 -->
+
+    <div>块元素，独自占用一行，宽度默认是容器（父级元素）的100%，是一个盒子或容器，可控制高度、宽度、外/内边距</div>瑟瑟发抖
+
+    <span>行内元素，一行可以显示多个</span><span>不能直接设置宽高，只能容纳文本或其他行内元素</span>
+
+    <!-- 行内块元素,一行有多个，可以设置宽高 -->
+    <img src="" alt="">
+    <input type="text">
+    <input type="text">
+
+
+    <!-- 元素显示模式转换 -->
+    <!-- 例如增加链接a的触发范围 -->
+    <a href="#">淘宝</a>
+
+</body>
+
+</html>
